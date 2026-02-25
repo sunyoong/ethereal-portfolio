@@ -144,9 +144,10 @@ h1 {
     background: linear-gradient(135deg, #fff 0%, var(--secondary) 50%, var(--primary) 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.05em;
-    animation: gradient-flow 8s ease-in-out infinite alternate;
+    animation: gradient-flow 5s ease-in-out infinite alternate;
 }
 
 @keyframes gradient-flow {
