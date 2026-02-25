@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <canvas id="space-canvas"></canvas>
+    <div class="nebula" style="filter: hue-rotate(90deg) blur(80px);"></div>
+    <div id="cursor"></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main class="container">
+        <h1>ABOUT ME</h1>
+        <p>I am a creator of ethereal digital experiences. Focusing on high-end aesthetics, physics-based animations,
+            and immersive user interfaces.</p>
+        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <span
+                style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem;">JAVASCRIPT</span>
+            <span
+                style="background: var(--secondary); padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem;">CSS3</span>
+            <span
+                style="background: var(--accent); padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem;">VITE</span>
+        </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>

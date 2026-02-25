@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="space-canvas"></canvas>
+    <div class="nebula" style="filter: hue-rotate(180deg) blur(80px);"></div>
+    <div id="cursor"></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main class="container">
+        <h1>PROJECTS</h1>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Vite Galaxy</h3>
+                <p>Ethereal portfolio build system.</p>
+            </div>
+            <div class="project-card">
+                <h3>Bot-kun</h3>
+                <p>Friendly SVG mascot assistant.</p>
+            </div>
+            <div class="project-card">
+                <h3>Nebula CSS</h3>
+                <p>Glassmorphism design system.</p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .contact-links {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: #fff;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="space-canvas"></canvas>
+    <div class="nebula" style="filter: hue-rotate(270deg) blur(80px);"></div>
+    <div id="cursor"></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <main class="container">
+        <h1>GET IN TOUCH</h1>
+        <div class="contact-links">
+            <a href="mailto:hello@universe.com">Email: hello@universe.com</a>
+            <a href="https://github.com">GitHub: @universe_user</a>
+            <a href="#">LinkedIn: In/UniverseCreator</a>
+        </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
