@@ -74,6 +74,8 @@ nav a {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     transition: 0.3s;
+    transform: none !important;
+    /* Forces stability */
 }
 
 nav a:hover,
