@@ -90,6 +90,26 @@ document.addEventListener('mousemove', (e) => {
             item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
         }
     });
+
+    // Magnetic Interaction
+    const magneticElements = document.querySelectorAll('.magnetic, a, button, #mascot');
+    magneticElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+
+        if (dist < 100) {
+            const strength = 0.3;
+            const tx = (e.clientX - centerX) * strength;
+            const ty = (e.clientY - centerY) * strength;
+            el.style.transform = `translate(${tx}px, ${ty}px) scale(1.05)`;
+        } else {
+            if (!el.classList.contains('item') && !el.closest('.container')) {
+                el.style.transform = '';
+            }
+        }
+    });
 });
 
 document.addEventListener('mouseleave', () => {
@@ -127,7 +147,11 @@ document.querySelectorAll('.item, h1, p').forEach(el => {
 const path = window.location.pathname;
 document.querySelectorAll('nav a').forEach(link => {
     const href = link.getAttribute('href');
-    if (path.endsWith(href) || (path.endsWith('/') && href === 'index.html')) link.classList.add('active');
+    if (path.endsWith(href) || (path.endsWith('/') && href === 'index.html')) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
+    }
 });
 
 // --- Click Sparks ---
@@ -145,6 +169,7 @@ document.addEventListener('mousedown', (e) => {
         setTimeout(() => s.remove(), 800);
     }
 });
+
 // --- Kinetic Character Engine ---
 function initKineticType() {
     const tagline = document.getElementById('tagline');
@@ -164,25 +189,3 @@ function initKineticType() {
     }
 }
 initKineticType();
-
-// --- Magnetic Interaction ---
-document.addEventListener('mousemove', (e) => {
-    const interactives = document.querySelectorAll('.magnetic, a, button, #mascot');
-    interactives.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
-
-        if (dist < 100) {
-            const strength = 0.3;
-            const tx = (e.clientX - centerX) * strength;
-            const ty = (e.clientY - centerY) * strength;
-            el.style.transform = `translate(${tx}px, ${ty}px) scale(1.05)`;
-        } else {
-            if (!el.classList.contains('item')) { // Skip tilt items handled elsewhere
-                el.style.transform = '';
-            }
-        }
-    });
-});
