@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initNavAutoHighlight();
     initSparkEffect();
+    initStatsCounter();
 });
 
 // --- 2025 Hyper-Particle Engine ---
@@ -81,7 +82,17 @@ function initCursor() {
         dot.style.left = e.clientX + 'px';
         dot.style.top = e.clientY + 'px';
 
-        // Filter interactives - REMOVED .container from tilt
+        // Spotlight Tracking for .container
+        const container = document.querySelector('.container');
+        if (container) {
+            const rect = container.getBoundingClientRect();
+            const relX = ((e.clientX - rect.left) / rect.width) * 100;
+            const relY = ((e.clientY - rect.top) / rect.height) * 100;
+            container.style.setProperty('--mx', `${relX}%`);
+            container.style.setProperty('--my', `${relY}%`);
+        }
+
+        // ONLY target elements that should move/react
         const interactives = document.querySelectorAll('.item, .magnetic, a, button, #mascot, #tagline');
         let isOverInteractive = false;
 
@@ -164,6 +175,39 @@ function initNavAutoHighlight() {
             link.classList.remove('active');
         }
     });
+}
+
+// --- Stats Counter Engine ---
+function initStatsCounter() {
+    const stats = document.querySelectorAll('.stat-value');
+    if (stats.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.getAttribute('data-target'));
+                animateValue(entry.target, 0, target, 2000);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    stats.forEach(s => observer.observe(s));
+}
+
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        } else {
+            obj.innerHTML = end + (end === 50 ? '+' : ''); // Add + only for projects
+        }
+    };
+    window.requestAnimationFrame(step);
 }
 
 // --- Click Sparks ---
