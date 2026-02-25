@@ -94,20 +94,31 @@ function initCursor() {
             const centerY = rect.top + rect.height / 2;
             const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
 
-            if (dist < 100 && (el.classList.contains('magnetic') || el.tagName === 'A' || el.tagName === 'BUTTON' || el.id === 'mascot')) {
-                const strength = 0.3;
-                const tx = (e.clientX - centerX) * strength;
-                const ty = (e.clientY - centerY) * strength;
-                el.style.transform = `translate(${tx}px, ${ty}px) scale(1.05)`;
-                isOverInteractive = true;
-            } else if (el.classList.contains('item')) {
-                // Keep tilt only for grid items
+            const isMagnetic = (el.classList.contains('magnetic') || el.id === 'mascot') && !el.closest('nav');
+            const isClickable = el.tagName === 'A' || el.tagName === 'BUTTON' || el.id === 'tagline';
+            const isItem = el.classList.contains('item');
+
+            if (dist < 100) {
+                if (isMagnetic) {
+                    const strength = 0.3;
+                    const tx = (e.clientX - centerX) * strength;
+                    const ty = (e.clientY - centerY) * strength;
+                    el.style.transform = `translate(${tx}px, ${ty}px) scale(1.05)`;
+                }
+                if (isMagnetic || isClickable || isItem) isOverInteractive = true;
+            } else if (el.style.transform && !isItem) {
+                el.style.transform = '';
+            }
+
+            if (isItem) {
                 if (dist < 400) {
                     const rotateX = (rect.height / 2 - y) / 15;
                     const rotateY = (x - rect.width / 2) / 15;
                     el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
                     el.style.setProperty('--x', `${x}px`);
                     el.style.setProperty('--y', `${y}px`);
+                } else if (el.style.transform) {
+                    el.style.transform = '';
                 }
             }
         });
