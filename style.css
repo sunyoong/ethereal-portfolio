@@ -1,13 +1,12 @@
 :root {
     --primary: #6366f1;
     --secondary: #a855f7;
-    --bg: #050507;
+    --bg: #030305;
     --text: #ffffff;
     --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.08);
     --accent: #10b981;
-    --bento-bg: rgba(255, 255, 255, 0.02);
-    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    --bento-bg: rgba(255, 255, 255, 0.015);
 }
 
 * {
@@ -16,7 +15,6 @@
     box-sizing: border-box;
     font-family: 'Outfit', sans-serif;
     cursor: none !important;
-    /* Hide default for tiny cursor */
 }
 
 body {
@@ -24,15 +22,11 @@ body {
     color: var(--text);
     overflow-x: hidden;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
 }
 
-/* --- Tiny Elegant Cursor --- */
 #cursor-dot {
     position: fixed;
     width: 6px;
@@ -43,58 +37,47 @@ body {
     z-index: 10000;
     transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
     mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
 }
 
 #cursor-dot.active {
-    transform: scale(8);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(10);
+    background: rgba(255, 255, 255, 0.05);
+    border: 0.1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* --- Responsive Navigation --- */
 nav {
     position: fixed;
-    top: 1.5rem;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
     display: flex;
-    gap: 1.5rem;
-    background: rgba(5, 5, 7, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 0.7rem 1.8rem;
+    gap: 2rem;
+    background: rgba(3, 3, 5, 0.6);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 0.8rem 2rem;
     border-radius: 100px;
     border: 1px solid var(--glass-border);
-    animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 nav a {
     color: rgba(255, 255, 255, 0.4);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: all 0.3s ease;
+    letter-spacing: 0.15em;
+    transition: 0.3s;
 }
 
 nav a:hover,
 nav a.active {
-    color: var(--text);
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* --- Atmospheric Background --- */
 #space-canvas {
     position: fixed;
     top: 0;
@@ -104,181 +87,133 @@ nav a.active {
     z-index: -2;
 }
 
-/* --- Mascot Pinned & Interactive --- */
 #mascot {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     z-index: 500;
-    pointer-events: auto;
-    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
+    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.3));
     animation: breathing 4s ease-in-out infinite;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #mascot:hover {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.2) rotate(15deg);
+    filter: drop-shadow(0 0 25px var(--secondary));
 }
 
 @keyframes breathing {
 
     0%,
     100% {
-        transform: translateY(0) scale(1);
-        filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.2));
+        transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-12px) scale(1.03);
-        filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4));
+        transform: translateY(-15px);
     }
 }
 
-/* --- Bento Container --- */
 .container {
-    margin-top: 18vh;
-    padding: 4rem;
+    margin: 20vh auto 10vh;
+    padding: 5rem 2rem;
     background: var(--bento-bg);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
     border: 1px solid var(--glass-border);
-    border-radius: 40px;
+    border-radius: 48px;
     text-align: center;
-    z-index: 10;
-    max-width: 1000px;
+    max-width: 1100px;
     width: 90%;
-    box-shadow: var(--card-shadow);
-    animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    perspective: 1000px;
 }
 
 h1 {
-    font-size: clamp(2.2rem, 10vw, 5.5rem);
+    font-size: clamp(2.5rem, 12vw, 6.5rem);
     font-weight: 800;
-    line-height: 1;
+    line-height: 0.95;
     margin-bottom: 2rem;
     background: linear-gradient(135deg, #fff 40%, var(--secondary), var(--primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.04em;
-    animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes revealText {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    letter-spacing: -0.05em;
 }
 
 p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.6;
-    max-width: 700px;
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    max-width: 750px;
     margin: 0 auto;
     font-weight: 200;
 }
 
-/* --- Bento Grid Items --- */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
     width: 100%;
 }
 
 .item {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.015);
     border: 1px solid var(--glass-border);
-    padding: 2.5rem;
-    border-radius: 30px;
+    padding: 3rem;
+    border-radius: 40px;
     text-align: left;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.1s ease-out, background 0.4s, border 0.4s;
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
 }
 
-.item::before {
+.item::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.1) 0%, transparent 60%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s;
 }
 
 .item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
-.item:hover::before {
+.item:hover::after {
     opacity: 1;
 }
 
-.item h2,
 .item h3 {
-    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
     color: #fff;
-    font-size: 1.5rem;
+    transform: translateZ(20px);
 }
 
-/* --- Responsive Adjustments --- */
+.item p {
+    font-size: 1rem;
+    transform: translateZ(10px);
+}
+
 @media (max-width: 768px) {
     .container {
-        padding: 2rem;
-        margin-top: 15vh;
-        border-radius: 30px;
+        padding: 3rem 1.5rem;
+        border-radius: 32px;
     }
 
     nav {
         gap: 1rem;
-        padding: 0.6rem 1.2rem;
-    }
-
-    nav a {
-        font-size: 0.75rem;
-    }
-
-    #mascot {
-        width: 50px;
-        height: 50px;
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    p {
-        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+        width: auto;
     }
 }
