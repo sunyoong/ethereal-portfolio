@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio 2025 | Home</title>
+    <title>Portfolio 2025 | Aesthetic Engineering</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -19,7 +19,7 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
+    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(720deg) scale(1.2)'">
         <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
         <circle cx="40" cy="50" r="4" fill="#333">
             <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
@@ -34,17 +34,42 @@
     </svg>
 
     <main class="container">
+        <!-- Apple-style Floating Achievement Chips -->
+        <div class="floating-chip" style="top: 10%; left: 5%; animation: float 6s ease-in-out infinite;">Aesthetic First
+        </div>
+        <div class="floating-chip" style="top: -5%; right: 10%; animation: float 8s ease-in-out infinite 1s;">Next-Gen
+            Web</div>
+        <div class="floating-chip" style="bottom: 10%; left: 15%; animation: float 7s ease-in-out infinite 0.5s;">UI/UX
+            Craft</div>
+
         <h1 id="tagline" data-lang="en">UNFOLDING THE INFINITE</h1>
-        <p>Turning visionary concepts into high-performance, aesthetically driven reality.</p>
-        <div style="margin-top: 3.5rem; display: flex; justify-content: center; gap: 1.5rem;">
-            <a href="projects.html"
-                style="background: white; color: black; padding: 1rem 2.8rem; border-radius: 100px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block;">Explore
-                Space</a>
-            <a href="contact.html"
-                style="background: rgba(255,255,255,0.05); color: white; padding: 1rem 2.8rem; border-radius: 100px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; display: inline-block;">Let's
-                Talk</a>
+        <p>A minimalist design system engineered for visual clarity and emotional resonance. Crafting the future of the
+            web, bit by bit.</p>
+
+        <div class="cta-group">
+            <div class="magnetic">
+                <a href="projects.html" class="btn-primary">Explore Work</a>
+            </div>
+            <div class="magnetic">
+                <a href="contact.html" class="btn-secondary">Let's Talk <span
+                        style="font-size: 0.7rem; margin-left: 0.3rem;">→</span></a>
+            </div>
         </div>
     </main>
+
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(2deg);
+            }
+        }
+    </style>
 
     <script type="module" src="./main.js"></script>
     <script type="module">
@@ -57,19 +82,26 @@
             tagEl.addEventListener('click', () => {
                 const currentLang = tagEl.getAttribute('data-lang');
                 const nextLang = currentLang === 'en' ? 'ko' : 'en';
-                tagEl.style.transform = "translateY(-15px) scale(0.95)";
+
+                tagEl.style.filter = "blur(20px)";
                 tagEl.style.opacity = 0;
-                tagEl.style.filter = "blur(10px)";
+                tagEl.style.transform = "scale(0.95)";
+
                 setTimeout(() => {
                     tagEl.textContent = translations[nextLang];
                     tagEl.setAttribute('data-lang', nextLang);
-                    tagEl.style.transform = "translateY(0) scale(1)";
-                    tagEl.style.opacity = 1;
+
+                    // Re-init characters if needed (wait, tagline update needs to re-split)
+                    const text = tagline.innerText;
+                    tagline.innerHTML = text.split('').map((char, i) =>
+                        `<span class="char" style="transition-delay: ${i * 20}ms; opacity: 1; filter: blur(0); transform: translateY(0);">${char === ' ' ? '&nbsp;' : char}</span>`
+                    ).join('');
+
                     tagEl.style.filter = "blur(0)";
-                }, 400);
+                    tagEl.style.opacity = 1;
+                    tagEl.style.transform = "scale(1)";
+                }, 500);
             });
-            tagEl.style.transition = "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
-            tagEl.style.cursor = "pointer";
         }
     </script>
 </body>

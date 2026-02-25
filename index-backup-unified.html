@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio 2025 | Home</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="cursor-dot"></div>
+    <canvas id="space-canvas"></canvas>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
+        <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
+        <circle cx="40" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="60" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <line x1="50" y1="35" x2="50" y2="20" stroke="#f0f0f0" stroke-width="4" />
+        <circle cx="50" cy="20" r="5" fill="#6366f1">
+            <animate attributeName="fill" values="#6366f1;#a855f7;#6366f1" dur="2s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+
+    <main class="container">
+        <h1 id="tagline" data-lang="en">UNFOLDING THE INFINITE</h1>
+        <p>Turning visionary concepts into high-performance, aesthetically driven reality.</p>
+        <div style="margin-top: 3.5rem; display: flex; justify-content: center; gap: 1.5rem;">
+            <a href="projects.html"
+                style="background: white; color: black; padding: 1rem 2.8rem; border-radius: 100px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block;">Explore
+                Space</a>
+            <a href="contact.html"
+                style="background: rgba(255,255,255,0.05); color: white; padding: 1rem 2.8rem; border-radius: 100px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; display: inline-block;">Let's
+                Talk</a>
+        </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+    <script type="module">
+        const translations = {
+            en: "UNFOLDING THE INFINITE",
+            ko: "무한한 가능성을 펼치다"
+        };
+        const tagEl = document.getElementById('tagline');
+        if (tagEl) {
+            tagEl.addEventListener('click', () => {
+                const currentLang = tagEl.getAttribute('data-lang');
+                const nextLang = currentLang === 'en' ? 'ko' : 'en';
+                tagEl.style.transform = "translateY(-15px) scale(0.95)";
+                tagEl.style.opacity = 0;
+                tagEl.style.filter = "blur(10px)";
+                setTimeout(() => {
+                    tagEl.textContent = translations[nextLang];
+                    tagEl.setAttribute('data-lang', nextLang);
+                    tagEl.style.transform = "translateY(0) scale(1)";
+                    tagEl.style.opacity = 1;
+                    tagEl.style.filter = "blur(0)";
+                }, 400);
+            });
+            tagEl.style.transition = "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            tagEl.style.cursor = "pointer";
+        }
+    </script>
+</body>
+
+</html>
