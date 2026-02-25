@@ -9,32 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        .contact-links {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-links a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            color: #fff;
-            letter-spacing: 0.1em;
-        }
-    </style>
 </head>
 
 <body>
+    <div id="cursor-dot"></div>
     <canvas id="space-canvas"></canvas>
-    <div class="nebula" style="filter: hue-rotate(270deg) blur(80px);"></div>
-    <div id="cursor"></div>
 
     <nav>
         <a href="index.html">Home</a>
@@ -43,12 +22,40 @@
         <a href="contact.html" class="active">Contact</a>
     </nav>
 
+    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
+        <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
+        <circle cx="40" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="60" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <line x1="50" y1="35" x2="50" y2="20" stroke="#f0f0f0" stroke-width="4" />
+        <circle cx="50" cy="20" r="5" fill="#6366f1">
+            <animate attributeName="fill" values="#6366f1;#a855f7;#6366f1" dur="2s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+
     <main class="container">
         <h1>GET IN TOUCH</h1>
-        <div class="contact-links">
-            <a href="mailto:hello@universe.com">Email: hello@universe.com</a>
-            <a href="https://github.com">GitHub: @universe_user</a>
-            <a href="#">LinkedIn: In/UniverseCreator</a>
+        <p>Ready to build the next big thing together? Let's connect across the digital void.</p>
+        <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="mailto:contact@universe.com"
+                style="color: var(--primary); text-decoration: none; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em;">contact@universe.com</a>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                <a href="#"
+                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">GitHub</a>
+                <a href="#"
+                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">LinkedIn</a>
+                <a href="#"
+                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">Twitter</a>
+            </div>
         </div>
     </main>
 

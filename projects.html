@@ -9,33 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-    </style>
 </head>
 
 <body>
+    <div id="cursor-dot"></div>
     <canvas id="space-canvas"></canvas>
-    <div class="nebula" style="filter: hue-rotate(180deg) blur(80px);"></div>
-    <div id="cursor"></div>
 
     <nav>
         <a href="index.html">Home</a>
@@ -44,20 +22,35 @@
         <a href="contact.html">Contact</a>
     </nav>
 
+    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
+        <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
+        <circle cx="40" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="60" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <line x1="50" y1="35" x2="50" y2="20" stroke="#f0f0f0" stroke-width="4" />
+        <circle cx="50" cy="20" r="5" fill="#6366f1">
+            <animate attributeName="fill" values="#6366f1;#a855f7;#6366f1" dur="2s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+
     <main class="container">
         <h1>PROJECTS</h1>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Vite Galaxy</h3>
-                <p>Ethereal portfolio build system.</p>
+        <p>A selection of futuristic digital experiments and aesthetic explorations.</p>
+        <div class="grid">
+            <div class="item">
+                <h3>Nebula Engine</h3>
+                <p>Advanced space-themed particle system for immersive environments.</p>
             </div>
-            <div class="project-card">
-                <h3>Bot-kun</h3>
-                <p>Friendly SVG mascot assistant.</p>
+            <div class="item">
+                <h3>Bento Frame</h3>
+                <p>Minimalist UI framework optimized for 2025 design standards.</p>
             </div>
-            <div class="project-card">
-                <h3>Nebula CSS</h3>
-                <p>Glassmorphism design system.</p>
+            <div class="item">
+                <h3>Glass Core</h3>
+                <p>Premium glassmorphism library with refined physics-based blur.</p>
             </div>
         </div>
     </main>
