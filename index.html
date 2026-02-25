@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio 2025 | Premium Experience</title>
+    <title>Portfolio 2025 | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -13,28 +16,33 @@
     <canvas id="space-canvas"></canvas>
 
     <nav>
-        <a href="index.html">Index</a>
-        <a href="projects.html">Works</a>
-        <a href="about.html">Profile</a>
-        <a href="contact.html">Connect</a>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
-    <svg id="mascot" viewBox="0 0 100 100">
-        <rect x="25" y="35" width="50" height="40" rx="12" fill="#cbd5e1" />
-        <circle cx="40" cy="50" r="3" fill="#050505" />
-        <circle cx="60" cy="50" r="3" fill="#050505" />
-        <line x1="50" y1="35" x2="50" y2="22" stroke="#cbd5e1" stroke-width="3" />
-        <circle cx="50" cy="22" r="4" fill="#64748b" />
+    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
+        <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
+        <circle cx="40" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="60" cy="50" r="4" fill="#333">
+            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <line x1="50" y1="35" x2="50" y2="20" stroke="#f0f0f0" stroke-width="4" />
+        <circle cx="50" cy="20" r="5" fill="#6366f1">
+            <animate attributeName="fill" values="#6366f1;#a855f7;#6366f1" dur="2s" repeatCount="indefinite" />
+        </circle>
     </svg>
 
     <main class="container">
         <h1 id="tagline" data-lang="en">UNFOLDING THE INFINITE</h1>
-        <p>Architecting digital experiences through the lens of pure minimalism and high-performance engineering.</p>
-        <div style="margin-top: 4rem;">
+        <p>Turning visionary concepts into high-performance, aesthetically driven reality.</p>
+        <div style="margin-top: 3.5rem; display: flex; justify-content: center; gap: 1rem;">
             <a href="projects.html"
-                style="color: var(--text-primary); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.3em; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; transition: 0.4s;"
-                onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='var(--border)'">View
-                Selected Works</a>
+                style="background: var(--text); color: var(--bg); padding: 1rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 600; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);">Explore
+                Space</a>
         </div>
     </main>
 
@@ -49,17 +57,18 @@
             const currentLang = tagEl.getAttribute('data-lang');
             const nextLang = currentLang === 'en' ? 'ko' : 'en';
 
-            tagEl.style.filter = "blur(10px)";
+            tagEl.style.transform = "translateY(-10px)";
             tagEl.style.opacity = 0;
 
             setTimeout(() => {
                 tagEl.textContent = translations[nextLang];
                 tagEl.setAttribute('data-lang', nextLang);
-                tagEl.style.filter = "blur(0)";
+                tagEl.style.transform = "translateY(0)";
                 tagEl.style.opacity = 1;
-            }, 400);
+            }, 300);
         });
-        tagEl.style.transition = "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+        tagEl.style.transition = "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+        tagEl.style.cursor = "pointer";
     </script>
 </body>
 
