@@ -68,25 +68,19 @@
                 const currentLang = tagEl.getAttribute('data-lang');
                 const nextLang = currentLang === 'en' ? 'ko' : 'en';
 
-                // Kinetic transition logic
+                // Simple transition logic
                 tagEl.style.opacity = '0';
-                tagEl.style.filter = 'blur(10px)';
+                tagEl.style.transform = 'translateY(-10px)';
 
                 setTimeout(() => {
                     tagEl.textContent = translations[nextLang];
                     tagEl.setAttribute('data-lang', nextLang);
-
-                    // Re-kineticize
-                    const text = tagEl.innerText;
-                    tagEl.innerHTML = text.split('').map((char, i) =>
-                        `<span class="char" style="transition-delay: ${i * 20}ms; opacity: 1; filter: blur(0); transform: translateY(0); display: inline-block;">${char === ' ' ? '&nbsp;' : char}</span>`
-                    ).join('');
-
                     tagEl.style.opacity = '1';
-                    tagEl.style.filter = 'blur(0)';
-                }, 400);
+                    tagEl.style.transform = 'translateY(0)';
+                }, 300);
             });
             tagEl.style.cursor = "pointer";
+            tagEl.style.transition = "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
         }
     </script>
 </body>

@@ -40,6 +40,8 @@ body {
     transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
     mix-blend-mode: difference;
     transform: translate(-50%, -50%);
+    opacity: 1;
+    /* Ensure visible */
 }
 
 #cursor-dot.active {
@@ -131,7 +133,7 @@ nav a.active {
     width: 90%;
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
     perspective: 1000px;
-    transition: transform 0.1s ease-out;
+    /* transition: transform removed to avoid tilt jitter */
 }
 
 h1 {
@@ -256,10 +258,4 @@ p {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.char {
-    display: inline-block;
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateY(20px);
-    transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* .char removed to simplify typography */

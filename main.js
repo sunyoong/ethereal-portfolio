@@ -1,7 +1,6 @@
 // --- Global Defensive Initializer ---
 document.addEventListener('DOMContentLoaded', () => {
     initCanvas();
-    initKineticType();
     initCursor();
     initScrollReveal();
     initNavAutoHighlight();
@@ -72,22 +71,25 @@ function initCursor() {
     const dot = document.getElementById('cursor-dot');
     if (!dot) return;
 
+    // Ensure dot is visible
+    dot.style.opacity = '1';
+    dot.style.display = 'block';
+
     document.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         dot.style.left = e.clientX + 'px';
         dot.style.top = e.clientY + 'px';
 
-        // 3D Card Tilt & Magnetic
-        const interactives = document.querySelectorAll('.item, .container, .magnetic, a, button, #mascot, #tagline');
-        let isActive = false;
+        // Filter interactives - REMOVED .container from tilt
+        const interactives = document.querySelectorAll('.item, .magnetic, a, button, #mascot, #tagline');
+        let isOverInteractive = false;
 
         interactives.forEach(el => {
             const rect = el.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            // Magnetic Check
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
@@ -97,9 +99,9 @@ function initCursor() {
                 const tx = (e.clientX - centerX) * strength;
                 const ty = (e.clientY - centerY) * strength;
                 el.style.transform = `translate(${tx}px, ${ty}px) scale(1.05)`;
-                isActive = true;
-            } else if (el.classList.contains('item') || el.classList.contains('container')) {
-                // Tilt logic for Bento items
+                isOverInteractive = true;
+            } else if (el.classList.contains('item')) {
+                // Keep tilt only for grid items
                 if (dist < 400) {
                     const rotateX = (rect.height / 2 - y) / 15;
                     const rotateY = (x - rect.width / 2) / 15;
@@ -110,33 +112,13 @@ function initCursor() {
             }
         });
 
-        if (isActive) dot.classList.add('active');
+        if (isOverInteractive) dot.classList.add('active');
         else dot.classList.remove('active');
     });
 
     document.addEventListener('mouseleave', () => {
-        document.querySelectorAll('.item, .container, .magnetic, a, button, #mascot').forEach(el => el.style.transform = '');
+        document.querySelectorAll('.item, .magnetic, a, button, #mascot').forEach(el => el.style.transform = '');
     });
-}
-
-// --- Kinetic Typography (Home Page) ---
-function initKineticType() {
-    const tagline = document.getElementById('tagline');
-    if (!tagline) return;
-
-    const text = tagline.textContent;
-    tagline.innerHTML = text.split('').map((char, i) =>
-        `<span class="char" style="transition-delay: ${i * 30}ms">${char === ' ' ? '&nbsp;' : char}</span>`
-    ).join('');
-
-    // Force visibility update
-    setTimeout(() => {
-        tagline.querySelectorAll('.char').forEach(c => {
-            c.style.opacity = '1';
-            c.style.filter = 'blur(0)';
-            c.style.transform = 'translateY(0)';
-        });
-    }, 100);
 }
 
 // --- Scroll Reveal ---
@@ -150,13 +132,11 @@ function initScrollReveal() {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.item, h1, p, .container').forEach(el => {
-        if (!el.classList.contains('char')) { // Don't hide chars
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(30px) scale(0.95)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-            observer.observe(el);
-        }
+    document.querySelectorAll('.item, h1, p, .container, .grid').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(30px) scale(0.95)';
+        el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        observer.observe(el);
     });
 }
 
@@ -165,7 +145,9 @@ function initNavAutoHighlight() {
     const path = window.location.pathname;
     document.querySelectorAll('nav a').forEach(link => {
         const href = link.getAttribute('href');
-        if (path.endsWith(href) || (path.endsWith('/') && href === 'index.html')) {
+        // Handle root path or index.html
+        const isHome = path.endsWith(href) || (path.endsWith('/') && href === 'index.html') || (path === '' && href === 'index.html');
+        if (isHome || path.includes(href)) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
