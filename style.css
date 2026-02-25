@@ -141,23 +141,10 @@ h1 {
     font-weight: 800;
     line-height: 0.95;
     margin-bottom: 2rem;
-    background: linear-gradient(135deg, #fff 0%, var(--secondary) 50%, var(--primary) 100%);
-    background-size: 200% 200%;
+    background: linear-gradient(135deg, #fff 40%, var(--secondary), var(--primary));
     -webkit-background-clip: text;
-    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.05em;
-    animation: gradient-flow 5s ease-in-out infinite alternate;
-}
-
-@keyframes gradient-flow {
-    0% {
-        background-position: 0% 0%;
-    }
-
-    100% {
-        background-position: 100% 100%;
-    }
 }
 
 p {
