@@ -4,10 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Contact</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
+    <title>Portfolio 2025 | Connect</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -16,45 +13,39 @@
     <canvas id="space-canvas"></canvas>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="index.html">Index</a>
+        <a href="projects.html">Works</a>
+        <a href="about.html">Profile</a>
+        <a href="contact.html" class="active">Connect</a>
     </nav>
 
-    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
-        <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
-        <circle cx="40" cy="50" r="4" fill="#333">
-            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="60" cy="50" r="4" fill="#333">
-            <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
-        </circle>
-        <line x1="50" y1="35" x2="50" y2="20" stroke="#f0f0f0" stroke-width="4" />
-        <circle cx="50" cy="20" r="5" fill="#6366f1">
-            <animate attributeName="fill" values="#6366f1;#a855f7;#6366f1" dur="2s" repeatCount="indefinite" />
-        </circle>
+    <svg id="mascot" viewBox="0 0 100 100">
+        <rect x="25" y="35" width="50" height="40" rx="12" fill="#cbd5e1" />
+        <circle cx="40" cy="50" r="3" fill="#050505" />
+        <circle cx="60" cy="50" r="3" fill="#050505" />
+        <line x1="50" y1="35" x2="50" y2="22" stroke="#cbd5e1" stroke-width="3" />
+        <circle cx="50" cy="22" r="4" fill="#64748b" />
     </svg>
 
     <main class="container">
         <h1>GET IN TOUCH</h1>
         <p>Ready to build the next big thing together? Let's connect across the digital void.</p>
-        <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="margin-top: 4rem; display: flex; flex-direction: column; gap: 2rem;">
             <a href="mailto:contact@universe.com"
-                style="color: var(--primary); text-decoration: none; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em;">contact@universe.com</a>
-            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                style="color: var(--text-primary); text-decoration: none; font-family: 'Instrument Serif', serif; font-size: 2.5rem; font-style: italic;">contact@universe.com</a>
+            <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 2rem;">
                 <a href="#"
-                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; transition: color 0.4s;"
                     onmouseover="this.style.color='#fff'"
-                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">GitHub</a>
+                    onmouseout="this.style.color='var(--text-secondary)'">GitHub</a>
                 <a href="#"
-                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; transition: color 0.4s;"
                     onmouseover="this.style.color='#fff'"
-                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">LinkedIn</a>
+                    onmouseout="this.style.color='var(--text-secondary)'">LinkedIn</a>
                 <a href="#"
-                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; transition: color 0.4s;"
                     onmouseover="this.style.color='#fff'"
-                    onmouseout="this.style.color='rgba(255,255,255,0.4)'">Twitter</a>
+                    onmouseout="this.style.color='var(--text-secondary)'">Twitter</a>
             </div>
         </div>
     </main>
