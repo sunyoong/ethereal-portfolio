@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio 2025 | Contact</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -22,7 +19,7 @@
         <a href="contact.html" class="active">Contact</a>
     </nav>
 
-    <svg id="mascot" viewBox="0 0 100 100">
+    <svg id="mascot" viewBox="0 0 100 100" onclick="this.style.transform='rotate(360deg) scale(1.5)'">
         <rect x="25" y="35" width="50" height="40" rx="15" fill="#f0f0f0" />
         <circle cx="40" cy="50" r="4" fill="#333">
             <animate attributeName="r" values="4;1;4" dur="3s" repeatCount="indefinite" />
@@ -39,21 +36,23 @@
     <main class="container">
         <h1>GET IN TOUCH</h1>
         <p>Ready to build the next big thing together? Let's connect across the digital void.</p>
-        <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="margin-top: 4rem; display: flex; flex-direction: column; gap: 2rem;">
             <a href="mailto:contact@universe.com"
-                style="color: var(--primary); text-decoration: none; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em;">contact@universe.com</a>
-            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                style="color: var(--primary); text-decoration: none; font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; transition: 0.3s;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'">contact@universe.com</a>
+            <div style="display: flex; justify-content: center; gap: 2.5rem; margin-top: 1rem;">
                 <a href="#"
-                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
-                    onmouseover="this.style.color='#fff'"
+                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; transition: 0.3s;"
+                    onmouseover="this.style.color='white'"
                     onmouseout="this.style.color='rgba(255,255,255,0.4)'">GitHub</a>
                 <a href="#"
-                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
-                    onmouseover="this.style.color='#fff'"
+                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; transition: 0.3s;"
+                    onmouseover="this.style.color='white'"
                     onmouseout="this.style.color='rgba(255,255,255,0.4)'">LinkedIn</a>
                 <a href="#"
-                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; transition: color 0.3s;"
-                    onmouseover="this.style.color='#fff'"
+                    style="color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; transition: 0.3s;"
+                    onmouseover="this.style.color='white'"
                     onmouseout="this.style.color='rgba(255,255,255,0.4)'">Twitter</a>
             </div>
         </div>
